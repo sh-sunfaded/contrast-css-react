@@ -1,6 +1,6 @@
 {
   "name": "contrast-css-react",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Typed React components wrapping the contrast-css monochrome template. Paper tokens (white/black), markup contracts enforced by types, and a Reveal component with built-in IntersectionObserver. Styles are bundled via the contrast-css dependency - no CSS import needed on the consumer side.",
   "type": "module",
   "types": "./dist/index.d.ts",
