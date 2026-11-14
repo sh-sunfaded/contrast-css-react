@@ -1,0 +1,36 @@
+# contrast-css で実績のある Trusted Publisher(OIDC)公開フローを流用。
+# 認証トークンは一切置かない: permissions.id-token と Node 24 バンドルの
+# npm(>=11.5)の OIDC トークン交換だけで publish する。
+# Node 22 に下げるとバンドル npm 10.x にトークン交換がなく
+# 403/404になるので node-version は触らないこと。
+
+name: Publish
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    # npm側のTrusted Publisher登録で Environment を指定した場合だけ
+    # この行のコメントを外して名前を合わせる:
+    # environment: npm
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Publish (Provenance付き)
+        # typecheck / test / build は npm publish が prepublishOnly として
+        # 必ず走らせるので、ここには書かない(二度手間になる)。
+        run: npm publish --provenance
