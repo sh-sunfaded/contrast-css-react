@@ -5,7 +5,7 @@ import "contrast-css";
 // ── 内部ユーティリティ ──────────────────────────────────
 
 /** @param {...(string | boolean | null | undefined)} parts */
-function cx(...parts: (string | boolean | null | undefined)[]): string {
+const cx = (...parts: (string | boolean | null | undefined)[]): string => {
   return parts.filter(Boolean).join(" ");
 }
 
@@ -15,71 +15,71 @@ type BtnVariant = "outline" | "solid";
 // ── 1. レイアウト ──────────────────────────────────────
 
 /** 紙面。tone が紙面トークン(背景・文字・罫・反転)を一括定義する */
-export function Paper({
+export const Paper = ({
   tone,
   ...rest
-}: ComponentPropsWithoutRef<"section"> & { tone: Tone }) {
+}: ComponentPropsWithoutRef<"section"> & { tone: Tone })=> {
   return <section className={cx(rest.className, `ct-paper-${tone}`)} {...rest} />;
 }
 
 /** 中央寄せコンテナ(ct-container) */
-export function Container(props: ComponentPropsWithoutRef<"div">) {
+export const Container =  (props: ComponentPropsWithoutRef<"div">) => {
   const { className, ...rest } = props;
   return <div className={cx(className, "ct-container")} {...rest} />;
 }
 
 /** セクション縦幅(ct-section)— Container の内側で使う */
-export function Section(props: ComponentPropsWithoutRef<"div">) {
+export const Section = (props: ComponentPropsWithoutRef<"div">) => {
   const { className, ...rest } = props;
   return <div className={cx(className, "ct-section")} {...rest} />;
 }
 
 /** 段組グリッド(ct-grid-2 / ct-grid-4) */
-export function Grid({
+export const Grid = ({
   cols = 2,
   ...rest
-}: ComponentPropsWithoutRef<"div"> & { cols?: 2 | 4 }) {
+}: ComponentPropsWithoutRef<"div"> & { cols?: 2 | 4 }) => {
   const { className, ...rest2 } = rest;
   return <div className={cx(className, `ct-grid-${cols}`)} {...rest2} />;
 }
 
 // ── 2. タイポ ──────────────────────────────────────────
 
-export function H1(props: ComponentPropsWithoutRef<"h1">) {
+export const H1 = (props: ComponentPropsWithoutRef<"h1">) => {
   const { className, ...rest } = props;
   return <h1 className={cx(className, "ct-h1")} {...rest} />;
 }
 
-export function H2(props: ComponentPropsWithoutRef<"h2">) {
+export const H2 = (props: ComponentPropsWithoutRef<"h2">) => {
   const { className, ...rest } = props;
   return <h2 className={cx(className, "ct-h2")} {...rest} />;
 }
 
-export function H3(props: ComponentPropsWithoutRef<"h3">) {
+export const H3 = (props: ComponentPropsWithoutRef<"h3">) => {
   const { className, ...rest } = props;
   return <h3 className={cx(className, "ct-h3")} {...rest} />;
 }
 
 /** ラベル(英大文字 — 「 — 」区切り) */
-export function Label(props: ComponentPropsWithoutRef<"p">) {
+export const Label = (props: ComponentPropsWithoutRef<"p">) => {
   const { className, ...rest } = props;
   return <p className={cx(className, "ct-label")} {...rest} />;
 }
 
 /** 等幅 */
-export function Mono(props: ComponentPropsWithoutRef<"span">) {
+export const Mono = (props: ComponentPropsWithoutRef<"span">) => {
   const { className, ...rest } = props;
   return <span className={cx(className, "ct-mono")} {...rest} />;
 }
 
 /** ルビ・サブキャプション(h1/h2直下の小さめ等幅行) */
-export function Ruby(props: ComponentPropsWithoutRef<"p">) {
+export const Ruby = (props: ComponentPropsWithoutRef<"p">) => {
   const { className, ...rest } = props;
   return <p className={cx(className, "ct-ruby")} {...rest} />;
 }
 
 /** 副本文(階調は白黒の不透明度のみ) */
-export function Sub(props: ComponentPropsWithoutRef<"p">) {
+export const Sub = (props: ComponentPropsWithoutRef<"p">) => {
   const { className, ...rest } = props;
   return <p className={cx(className, "ct-sub")} {...rest} />;
 }
@@ -87,19 +87,19 @@ export function Sub(props: ComponentPropsWithoutRef<"p">) {
 // ── 3. 罫線 ────────────────────────────────────────────
 
 /** 見出し下の太罫(4px) */
-export function Rule(props: ComponentPropsWithoutRef<"div">) {
+export const Rule = (props: ComponentPropsWithoutRef<"div">) => {
   const { className, ...rest } = props;
   return <div className={cx(className, "ct-rule")} {...rest} />;
 }
 
 /** 額縁(4px) */
-export function Frame(props: ComponentPropsWithoutRef<"div">) {
+export const Frame = (props: ComponentPropsWithoutRef<"div">) => {
   const { className, ...rest } = props;
   return <div className={cx(className, "ct-frame")} {...rest} />;
 }
 
 /** 小枠(2px) */
-export function Outline(props: ComponentPropsWithoutRef<"div">) {
+export const Outline = (props: ComponentPropsWithoutRef<"div">) => {
   const { className, ...rest } = props;
   return <div className={cx(className, "ct-outline")} {...rest} />;
 }
@@ -107,19 +107,19 @@ export function Outline(props: ComponentPropsWithoutRef<"div">) {
 // ── 4. リスト ──────────────────────────────────────────
 
 /** 上下太罫の1行リスト(子要素間に細罫を自動付与) */
-export function Rows(props: ComponentPropsWithoutRef<"ul">) {
+export const Rows = (props: ComponentPropsWithoutRef<"ul">) => {
   const { className, ...rest } = props;
   return <ul className={cx(className, "ct-rows")} {...rest} />;
 }
 
 /** 左太罫ピッチ */
-export function Pitch(props: ComponentPropsWithoutRef<"div">) {
+export const Pitch = (props: ComponentPropsWithoutRef<"div">) => {
   const { className, ...rest } = props;
   return <div className={cx(className, "ct-pitch")} {...rest} />;
 }
 
 /** 細罫の枠(罫の色だけ欲しい場合) */
-export function Lined(props: ComponentPropsWithoutRef<"div">) {
+export const Lined = (props: ComponentPropsWithoutRef<"div">) => {
   const { className, ...rest } = props;
   return <div className={cx(className, "ct-lined")} {...rest} />;
 }
@@ -127,12 +127,12 @@ export function Lined(props: ComponentPropsWithoutRef<"div">) {
 /**
  * 対立ペアのリスト。li 内の 3スパン構造(左 / ⇄ / 右)をコンポーネントが保証する。
  */
-export function Pairs({
+export const Pairs = ({
   items,
   ...rest
 }: ComponentPropsWithoutRef<"ul"> & {
     items: readonly (readonly [ReactNode, ReactNode])[];
-  }) {
+  }) => {
   const { className, ...rest2 } = rest;
   return (
     <ul className={cx(className, "ct-pairs")} {...rest2}>
@@ -151,12 +151,12 @@ export function Pairs({
  * FACTSの定義リスト。dt/dd を div で包む契約(.ct-facts > div)を強制する。
  * 上下の太罫も同時に付く(ct-rows 併用)。
  */
-export function Facts({
+export const Facts = ({
   items,
   ...rest
 }: ComponentPropsWithoutRef<"dl"> & {
   items: readonly (readonly [ReactNode, ReactNode])[];
-}) {
+}) => {
   const { className, ...rest2 } = rest;
   return (
     <dl className={cx(className, "ct-facts", "ct-rows")} {...rest2}>
@@ -173,25 +173,25 @@ export function Facts({
 // ── 5. 反転ブロック(強調は反転で行う) ────────────────────
 
 /** 強調スパン(紙面トークンで自動反転) */
-export function Em(props: ComponentPropsWithoutRef<"span">) {
+export const Em = (props: ComponentPropsWithoutRef<"span">) => {
   const { className, ...rest } = props;
   return <span className={cx(className, "ct-em")} {...rest} />;
 }
 
 /** タグライン帯 */
-export function Band(props: ComponentPropsWithoutRef<"span">) {
+export const Band = (props: ComponentPropsWithoutRef<"span">) => {
   const { className, ...rest } = props;
   return <span className={cx(className, "ct-band")} {...rest} />;
 }
 
 /** 見出し番号チップ */
-export function Chip(props: ComponentPropsWithoutRef<"span">) {
+export const Chip = (props: ComponentPropsWithoutRef<"span">) => {
   const { className, ...rest } = props;
   return <span className={cx(className, "ct-chip")} {...rest} />;
 }
 
 /** 成果バッジ */
-export function Badge(props: ComponentPropsWithoutRef<"span">) {
+export const Badge = (props: ComponentPropsWithoutRef<"span">) => {
   const { className, ...rest } = props;
   return <span className={cx(className, "ct-badge")} {...rest} />;
 }
@@ -199,14 +199,14 @@ export function Badge(props: ComponentPropsWithoutRef<"span">) {
 // ── 6. 表 ──────────────────────────────────────────────
 
 /** 枠付き表。th/td の構造をコンポーネントが生成する */
-export function Table({
+export const Table = ({
   columns,
   rows,
   ...rest
 }: ComponentPropsWithoutRef<"table"> & {
   columns: readonly ReactNode[];
   rows: readonly (readonly ReactNode[])[];
-}) {
+}) => {
   const { className, ...rest2 } = rest;
   return (
     <table className={cx(className, "ct-table")} {...rest2}>
@@ -256,10 +256,10 @@ export const Textarea = React.forwardRef<
 });
 
 /** ボタン(outline=枠 / solid=反転)。hoverはCSS側 */
-export function Btn({
+export const Btn = ({
   variant = "outline",
   ...rest
-}: ComponentPropsWithoutRef<"button"> & { variant?: BtnVariant }) {
+}: ComponentPropsWithoutRef<"button"> & { variant?: BtnVariant }) => {
   const { className, ...rest2 } = rest;
   return (
     <button
@@ -270,7 +270,7 @@ export function Btn({
 }
 
 /** エラー(唯一の例外色) */
-export function Error(props: ComponentPropsWithoutRef<"p">) {
+export const Error = (props: ComponentPropsWithoutRef<"p">) => {
   const { className, ...rest } = props;
   return <p className={cx(className, "ct-error")} {...rest} />;
 }
@@ -282,40 +282,41 @@ export function Error(props: ComponentPropsWithoutRef<"p">) {
  * contrast.css の .ct-reveal / .is-shown を使用。SSR安全・unmount時はcleanup。
  * once=false なら領域出入りで表示/非表示を繰り返す。
  */
-export function Reveal({
+export const Reveal = ({
   once = true,
   threshold = 0.15,
   ...rest
-}: ComponentPropsWithoutRef<"div"> & { once?: boolean; threshold?: number }) {
+}: ComponentPropsWithoutRef<"div"> & { once?: boolean; threshold?: number }) => {
   const { className, children } = rest;
   const ref = useRef<HTMLDivElement | null>(null);
   const [shown, setShown] = useState(false);
 
-  useEffect(
-    function () {
-      const el = ref.current;
-      if (!el) return undefined;
-      if (once && shown) return undefined;
-      if (typeof IntersectionObserver === "undefined") {
-        setShown(true); // IO非対応環境では即表示
-        return undefined;
-      }
-      const io = new IntersectionObserver(
-        function (entries) {
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    if (typeof IntersectionObserver === "undefined") {
+      setShown(true);
+      return;
+    }
+
+    const io = new IntersectionObserver(
+        (entries) => {
           for (const e of entries) {
-            if (e.isIntersecting) setShown(true);
-            else if (!once) setShown(false);
+            if (e.isIntersecting) {
+              setShown(true);
+              if (once) io.disconnect();
+            } else if (!once) {
+              setShown(false);
+            }
           }
         },
-        { threshold: threshold }
-      );
-      io.observe(el);
-      return function () {
-        io.disconnect();
-      };
-    },
-    [shown, once, threshold]
-  );
+        { threshold }
+    );
+
+    io.observe(el);
+    return () => io.disconnect();
+  }, [once, threshold]);
 
   return (
     <div ref={ref} className={cx(className, "ct-reveal", shown ? "is-shown" : null)}>
