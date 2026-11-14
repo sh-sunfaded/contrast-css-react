@@ -1,0 +1,61 @@
+{
+  "name": "contrast-css-react",
+  "version": "0.1.0",
+  "description": "Typed React components wrapping the contrast-css monochrome template. Paper tokens (white/black), markup contracts enforced by types, and a Reveal component with built-in IntersectionObserver. Styles are bundled via the contrast-css dependency - no CSS import needed on the consumer side.",
+  "type": "module",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "prepublishOnly": "npm run typecheck && npm run build && npm test"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0 || ^19.0.0"
+  },
+  "dependencies": {
+    "contrast-css": "^0.1.1"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^16.1.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "jsdom": "^25.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.7.0",
+    "vitest": "^3.0.0"
+  },
+  "keywords": [
+    "react",
+    "react-components",
+    "contrast-css",
+    "design-system",
+    "monochrome",
+    "black-and-white",
+    "portfolio"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sh-sunfaded/contrast-css-react.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sh-sunfaded/contrast-css-react/issues"
+  },
+  "license": "MIT",
+  "author": "Kennedy"
+}
